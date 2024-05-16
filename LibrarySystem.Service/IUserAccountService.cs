@@ -14,5 +14,6 @@ namespace LibrarySystem.Service
         IEnumerable<UserAccount> GetAllWithOptions(PageModel pageModel);
         int GetCountWithOptions(PageModel pageModel);
         int DeleteWithIds(Guid[] ids);
+        int Save(UserAccount userAccount);
     }
 }

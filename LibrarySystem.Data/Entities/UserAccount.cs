@@ -12,13 +12,19 @@ namespace LibrarySystem.Data.Entities
         [Key]
         [Required]
         public Guid UserAccountID { get; set; }
-        public required string UserName { get; set; }
-        public required string PasswordHash { get; set; }
-        public required string FirstName { get; set; }
+        [Required]
+        public string UserName { get; set; }
+        [Required]
+        public string PasswordHash { get; set; }
+        [Required]
+        public string FirstName { get; set; }
         public string? MiddleName { get; set; }
-        public required string LastName { get; set; }
-        public required Guid UserRoleID { get; set; }
-        public required DateTime CreateDate { get; set; }
+        [Required]
+        public string LastName { get; set; }
+        [Required]
+        public Guid UserRoleID { get; set; }
+        [Required]
+        public DateTime CreateDate { get; set; }
         public string? CreateBy { get; set; }
         public DateTime? UpdateDate { get; set; }
         public string? UpdateBy { get; set; }

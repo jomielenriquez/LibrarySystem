@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibrarySystem.Data.Interface
+namespace LibrarySystem.Service
 {
-    public interface IBaseRepository<T>
+    public interface IUserRoleService
     {
-        IEnumerable<T> GetAll();
-        IEnumerable<T> GetAllWithOptions(PageModel pageModel);
+        IEnumerable<UserRole> GetAll();
+        IEnumerable<UserRole> GetAllWithOptions(PageModel pageModel);
         int GetCountWithOptions(PageModel pageModel);
         int DeleteWithIds(Guid[] id);
         int Save(UserAccount userAccount);

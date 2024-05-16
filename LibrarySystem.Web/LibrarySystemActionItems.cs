@@ -20,7 +20,8 @@ namespace LibrarySystem.Web
         public string Id { get; set; }
         public string Table { get; set; }
         public required string Controller { get; set; }
-        public required string DeleteAction { get; set; }
+        public string DeleteAction { get; set; }
+        public string EditAction { get; set; }
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "div";
@@ -36,7 +37,7 @@ namespace LibrarySystem.Web
             // buttons
             if (this.Template == TemplateType.Default)
             {
-                output.Content.AppendHtml("<button type=\"button\" class=\"btn btn-link btn-sm\"><i class=\"bi bi-plus-lg\"></i> Add</button>");
+                output.Content.AppendHtml($"<a href=\"/{Controller}/{EditAction}\" type=\"button\" class=\"btn btn-link btn-sm\"><i class=\"bi bi-plus-lg\"></i> Add</a>");
                 output.Content.AppendHtml("<button id=\"" + Id + "Delete\" type=\"button\" class=\"btn btn-link btn-sm\"><i class=\"bi bi-x-circle\"></i> Delete</button>");
             }
 

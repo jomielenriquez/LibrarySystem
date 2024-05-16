@@ -42,5 +42,10 @@ namespace LibrarySystem.Service
         {
             return this._userAccountRepository.GetWithCreadentials(userCredentials);
         }
+
+        public int Save(UserAccount userAccount)
+        {
+            return this._userAccountRepository.Save(userAccount);
+        }
     }
 }

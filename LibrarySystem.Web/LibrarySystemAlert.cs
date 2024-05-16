@@ -15,9 +15,12 @@ namespace LibrarySystem.Web
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "div";
-            foreach(var alert in Alerts)
+            if(Alerts != null)
             {
-                output.Content.AppendHtml($"<div class=\"alert alert-dismissible alert-{alert.Type.ToString().ToLower()}\"><button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\"></button>{alert.Message}</div>");
+                foreach(var alert in Alerts)
+                {
+                    output.Content.AppendHtml($"<div class=\"alert alert-dismissible alert-{alert.Type.ToString().ToLower()}\"><button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\"></button>{alert.Message}</div>");
+                }
             }
         }
     }

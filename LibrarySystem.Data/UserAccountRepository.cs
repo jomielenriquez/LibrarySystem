@@ -113,20 +113,17 @@ namespace LibrarySystem.Data
 
         public int DeleteWithIds(Guid[] ids)
         {
-
-            //var user = _dbContext.UserAccount.Find(id);
-            //if(user == null)
-            //{
-            //    return false;
-            //}
-
-            //_dbContext.UserAccount.Remove(user);
-            //_dbContext.SaveChanges();
-
             var entitiesToDelete = _dbContext.UserAccount.Where(e => ids.Contains(e.UserAccountID));
 
             _dbContext.UserAccount.RemoveRange(entitiesToDelete);
 
+            return _dbContext.SaveChanges();
+        }
+
+        public int Save(UserAccount userAccount)
+        {
+            userAccount.CreateDate = DateTime.UtcNow;
+            _dbContext.UserAccount.Add(userAccount);
             return _dbContext.SaveChanges();
         }
     }

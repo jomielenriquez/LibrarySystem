@@ -3,11 +3,18 @@
     ViewData["Title"] = "Account List";
 }
 
-<Lib:ActionItems caption="User Accounts" template="Default" id="SysCoreActionItemID" table="UserAccountTableID" controller="Account" delete-action="Delete">
+<Lib:ActionItems caption="User Accounts"
+                template="Default"
+                id="UserAccountsID"
+                table="UserAccountTableID"
+                controller="Account"
+                delete-action="Delete"
+                edit-action="AccountEdit">
 </Lib:ActionItems>
+
 <Lib:SearchForm
     id="UserRoleSearchForm"
-    controller="Home"
+    controller="Account"
     action="AccountSearch">
     <Lib:Textbox
         id="AccountFirstName"
@@ -39,7 +46,7 @@
     page="Model.currenPage"
     selection-mode="Multiple"
     property="UserAccountID"
-    route="/Home/Account">
+    route="/Account/Account">
 
     <Lib:Column property="UserName" caption="User Name"></Lib:Column>
     <Lib:Column property="FirstName" caption="First Name"></Lib:Column>
