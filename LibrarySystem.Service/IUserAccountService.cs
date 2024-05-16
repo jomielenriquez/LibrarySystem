@@ -10,5 +10,9 @@ namespace LibrarySystem.Service
     public interface IUserAccountService
     {
         IEnumerable<UserAccount> GetAll();
+        UserAccount GetWithCreadentials(UserCredentials userCredentials);
+        IEnumerable<UserAccount> GetAllWithOptions(PageModel pageModel);
+        int GetCountWithOptions(PageModel pageModel);
+        bool DeleteConfirmed(Guid id);
     }
 }

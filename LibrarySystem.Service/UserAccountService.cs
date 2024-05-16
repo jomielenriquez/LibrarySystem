@@ -1,4 +1,5 @@
-﻿using LibrarySystem.Data.Entities;
+﻿using LibrarySystem.Data;
+using LibrarySystem.Data.Entities;
 using LibrarySystem.Data.Interface;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,15 @@ namespace LibrarySystem.Service
 {
     public class UserAccountService : IUserAccountService
     {
-        private readonly IBaseRepository<UserAccount> _userAccountRepository;
-        public UserAccountService(IBaseRepository<UserAccount> userAccountRepository)
+        private readonly UserAccountRepository _userAccountRepository;
+        public UserAccountService(UserAccountRepository userAccountRepository)
         {
             _userAccountRepository = userAccountRepository;
+        }
+
+        public bool DeleteConfirmed(Guid id)
+        {
+            return _userAccountRepository.DeleteConfirmed(id);
         }
 
         public IEnumerable<UserAccount> GetAll()
@@ -22,20 +28,19 @@ namespace LibrarySystem.Service
             return this._userAccountRepository.GetAll();
         }
 
-        private string ComputeMd5Hash(string input)
+        public IEnumerable<UserAccount> GetAllWithOptions(PageModel pageModel)
         {
-            using (MD5 md5 = MD5.Create())
-            {
-                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
-                byte[] hashBytes = md5.ComputeHash(inputBytes);
+            return this._userAccountRepository.GetAllWithOptions(pageModel);
+        }
 
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < hashBytes.Length; i++)
-                {
-                    sb.Append(hashBytes[i].ToString("X2"));
-                }
-                return sb.ToString();
-            }
+        public int GetCountWithOptions(PageModel pageModel)
+        {
+            return this._userAccountRepository.GetCountWithOptions(pageModel);
+        }
+
+        public UserAccount GetWithCreadentials(UserCredentials userCredentials)
+        {
+            return this._userAccountRepository.GetWithCreadentials(userCredentials);
         }
     }
 }

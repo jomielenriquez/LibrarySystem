@@ -1,0 +1,49 @@
+﻿@using LibrarySystem.Models
+@{
+    ViewData["Title"] = "Account List";
+}
+
+<Lib:ActionItems caption="User Accounts" template="Default" id="SysCoreActionItemID" table="UserAccountTableID" controller="Account" delete-action="Delete">
+    @* <Lib:Button type="Link" caption="Testing Lang" is-small=true icon="bi-file-minus"></Lib:Button> *@
+</Lib:ActionItems>
+<Lib:SearchForm
+    id="UserRoleSearchForm"
+    controller="Home"
+    action="AccountSearch">
+    <Lib:Textbox
+        id="AccountFirstName"
+        label="First Name"
+        type="text"
+        value="@Model.UserAccountSearch.AccountFirstName"
+        placeholder="Enter First Name">
+    </Lib:Textbox>
+    <Lib:Textbox
+        id="AccountMiddleName"
+        label="Middle Name"
+        type="text"
+        value="@Model.UserAccountSearch.AccountMiddleName"
+        placeholder="Enter Middle Name">
+    </Lib:Textbox>
+    <Lib:Textbox
+        id="AccountLastName"
+        label="Last Name"
+        type="text"
+        value="@Model.UserAccountSearch.AccountLastName"
+        placeholder="Enter Last Name">
+    </Lib:Textbox>
+</Lib:SearchForm>
+
+<Lib:Table
+    id="UserAccountTableID"
+    items="Model.UserAccounts"
+    count="Model.UserAccountsCount"
+    page="Model.currenPage"
+    selection-mode="Multiple"
+    property="UserAccountID"
+    route="/Home/Account">
+
+    <Lib:Column property="UserName"></Lib:Column>
+    <Lib:Column property="FirstName"></Lib:Column>
+    <Lib:Column property="LastName"></Lib:Column>
+
+</Lib:Table>
