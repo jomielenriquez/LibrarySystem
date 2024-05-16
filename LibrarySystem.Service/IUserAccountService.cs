@@ -13,6 +13,6 @@ namespace LibrarySystem.Service
         UserAccount GetWithCreadentials(UserCredentials userCredentials);
         IEnumerable<UserAccount> GetAllWithOptions(PageModel pageModel);
         int GetCountWithOptions(PageModel pageModel);
-        bool DeleteConfirmed(Guid id);
+        int DeleteWithIds(Guid[] ids);
     }
 }

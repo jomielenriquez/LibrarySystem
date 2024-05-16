@@ -17,6 +17,11 @@ namespace LibrarySystem.Controllers
             _userAccountService = userAccountService;
         }
 
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
+
         public IActionResult Account(PageModel pageModel)
         {
             AppModel appModel = new AppModel();

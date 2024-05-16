@@ -12,6 +12,6 @@ namespace LibrarySystem.Data.Interface
         IEnumerable<T> GetAll();
         IEnumerable<T> GetAllWithOptions(PageModel pageModel);
         int GetCountWithOptions(PageModel pageModel);
-        bool DeleteConfirmed(Guid id);
+        int DeleteWithIds(Guid[] id);
     }
 }

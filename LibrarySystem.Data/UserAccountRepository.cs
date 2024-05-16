@@ -111,18 +111,23 @@ namespace LibrarySystem.Data
             return query.Count();
         }
 
-        public bool DeleteConfirmed(Guid id)
+        public int DeleteWithIds(Guid[] ids)
         {
-            var user = _dbContext.UserAccount.Find(id);
-            if(user == null)
-            {
-                return false;
-            }
 
-            _dbContext.UserAccount.Remove(user);
-            _dbContext.SaveChangesAsync();
+            //var user = _dbContext.UserAccount.Find(id);
+            //if(user == null)
+            //{
+            //    return false;
+            //}
 
-            return true;
+            //_dbContext.UserAccount.Remove(user);
+            //_dbContext.SaveChanges();
+
+            var entitiesToDelete = _dbContext.UserAccount.Where(e => ids.Contains(e.UserAccountID));
+
+            _dbContext.UserAccount.RemoveRange(entitiesToDelete);
+
+            return _dbContext.SaveChanges();
         }
     }
 }

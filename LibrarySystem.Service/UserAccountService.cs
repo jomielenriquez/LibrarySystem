@@ -18,9 +18,9 @@ namespace LibrarySystem.Service
             _userAccountRepository = userAccountRepository;
         }
 
-        public bool DeleteConfirmed(Guid id)
+        public int DeleteWithIds(Guid[] ids)
         {
-            return _userAccountRepository.DeleteConfirmed(id);
+            return _userAccountRepository.DeleteWithIds(ids);
         }
 
         public IEnumerable<UserAccount> GetAll()

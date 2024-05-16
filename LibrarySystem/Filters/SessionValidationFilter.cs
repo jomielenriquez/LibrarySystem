@@ -17,7 +17,7 @@ namespace LibrarySystem.Filters
             var username = context.Session.GetString("UserAccountID");
 
             // If the username is not in the session and the path is not login, redirect to login
-            if (username == null && !context.Request.Path.StartsWithSegments("/Account/LoginUser") && !context.Request.Path.StartsWithSegments("/Account/Login"))
+            if (username == null && !context.Request.Path.StartsWithSegments("/Account/Login"))
             {
                 context.Response.Redirect("/Account/Login");
                 return;

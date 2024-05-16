@@ -60,7 +60,7 @@ namespace LibrarySystem.Web
 
             foreach (var column in columns)
             {
-                output.Content.AppendHtml($"<th style='cursor:pointer' onclick=\"window.location = '{Route}/?Page={Page}&PageSize={pageSize}&OrderByProperty={column}&IsAscending={(column == orderBy && isAscending ? false : true)}'\">{column} {(orderBy == column ? "<i class=\"bi bi-sort-" + (isAscending ? "up" : "down") + "\"></i>" : "")}</th>");
+                output.Content.AppendHtml($"<th style='cursor:pointer' onclick=\"window.location = '{Route}/?Page={Page}&PageSize={pageSize}&OrderByProperty={column.Prop}&IsAscending={(column.Prop == orderBy && isAscending ? false : true)}'\">{column.Caption} {(orderBy == column.Prop ? "<i class=\"bi bi-sort-" + (isAscending ? "up" : "down") + "\"></i>" : "")}</th>");
             }
             output.Content.AppendHtml("</tr></thead>");
 
@@ -87,7 +87,7 @@ namespace LibrarySystem.Web
                 }
                 foreach (var column in columns)
                 {
-                    var value = item.GetType().GetProperty(column)?.GetValue(item, null)?.ToString();
+                    var value = item.GetType().GetProperty(column.Prop)?.GetValue(item, null)?.ToString();
                     output.Content.AppendHtml($"<td>{value}</td>");
                 }
                 output.Content.AppendHtml("</tr>");
@@ -123,9 +123,11 @@ namespace LibrarySystem.Web
         }
 
         // Helper method to get property names of custom-column child tags
-        private List<string> GetCustomColumnProperties(TagHelperContent content)
+        private List<HeaderDetail> GetCustomColumnProperties(TagHelperContent content)
         {
             var columns = new List<string>();
+
+            var propColumns = new List<HeaderDetail>();
 
             var contentString = content.GetContent();
             var startIndex = 0;
@@ -139,16 +141,31 @@ namespace LibrarySystem.Web
                 var propertyIndex = contentString.IndexOf("property=\"", customColumnIndex) + "property=\"".Length;
                 var propertyEndIndex = contentString.IndexOf('"', propertyIndex);
 
+                var captionIndex = contentString.IndexOf("caption=\"", customColumnIndex) + "caption=\"".Length;
+                var captionEndIndex = contentString.IndexOf('"', captionIndex);
+
                 if (propertyIndex >= 0 && propertyEndIndex > propertyIndex)
                 {
                     var property = contentString.Substring(propertyIndex, propertyEndIndex - propertyIndex);
+                    var caption = contentString.Substring(captionIndex, captionEndIndex - captionIndex);
                     columns.Add(property);
+
+                    propColumns.Add(new HeaderDetail
+                    {
+                        Prop = property,
+                        Caption = caption,
+                    });
                 }
 
                 startIndex = propertyEndIndex;
             }
 
-            return columns;
+            return propColumns;
+        }
+        public class HeaderDetail
+        {
+            public string Prop { get; set; }
+            public string Caption { get; set; }
         }
     }
 }

@@ -18,8 +18,6 @@
                 selected.push($(element).val());
             });
 
-            console.log(selected);
-
             $.ajax({
                 url: '/' + thisController + '/' + thisDeleteAction + '', // URL to send the request
                 method: 'POST', // HTTP method
@@ -27,6 +25,7 @@
                 //dataType: 'json', // Type of data expected back from the server
                 data: JSON.stringify(selected),
                 success: function (data) {
+                    alert(data + " record(s) deleted.");
                     console.log(data);
                     location.reload();
                 },
