@@ -1,4 +1,5 @@
 using LibrarySystem.Data.Entities;
+using LibrarySystem.Extension;
 using LibrarySystem.Models;
 using LibrarySystem.Service;
 using LibrarySystem.Web.Model;
@@ -20,8 +21,9 @@ namespace LibrarySystem.Controllers
 
         public IActionResult Dashboard()
         {
-            AppModel appModel = new AppModel();
-            //appModel.Alerts = new List<AlertModel>();
+            AppModel appModel = HttpContext.Session.GetOrCreateAppModel();
+            appModel.UserAccountID = new Guid(HttpContext.Session.GetString("UserAccountID"));
+
             return View(appModel);
         }
 

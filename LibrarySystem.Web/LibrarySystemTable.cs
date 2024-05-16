@@ -27,6 +27,8 @@ namespace LibrarySystem.Web
         public required string Id { get; set; }
         public string Property { get; set; }
         public required string Route { get; set; }
+        public string Url { get; set; }
+        public int Column { get; set; }
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "table";
@@ -75,20 +77,25 @@ namespace LibrarySystem.Web
             foreach (var item in Items)
             {
                 output.Content.AppendHtml("<tr>");
+                var value = item.GetType().GetProperty(Property)?.GetValue(item, null)?.ToString();
                 if (SelectionMode == SelectionModeType.Single)
                 {
-                    var value = item.GetType().GetProperty(Property)?.GetValue(item, null)?.ToString();
                     output.Content.AppendHtml($"<td><input value=\"{value}\" class=\"form-check-input\" type=\"radio\" name=\"optionsRadios\"></td>");
                 }
                 else if (SelectionMode == SelectionModeType.Multiple)
                 {
-                    var value = item.GetType().GetProperty(Property)?.GetValue(item, null)?.ToString();
                     output.Content.AppendHtml($"<td><input value=\"{value}\" class=\"form-check-input " + Id + "Class\" type=\"checkbox\" name=\"optionsRadios\"></th>");
                 }
+                bool isFirst = true;
                 foreach (var column in columns)
                 {
-                    var value = item.GetType().GetProperty(column.Prop)?.GetValue(item, null)?.ToString();
-                    output.Content.AppendHtml($"<td>{value}</td>");
+                    var text = item.GetType().GetProperty(column.Prop)?.GetValue(item, null)?.ToString();
+                    if (!string.IsNullOrEmpty(Url) && isFirst)
+                    {
+                        text = $"<a href=\"{Url}{value}\">{text}</a>";
+                        isFirst = false;
+                    }
+                    output.Content.AppendHtml($"<td>{text}</td>");
                 }
                 output.Content.AppendHtml("</tr>");
             }

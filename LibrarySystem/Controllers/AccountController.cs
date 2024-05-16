@@ -1,8 +1,10 @@
 ﻿using LibrarySystem.Data.Entities;
+using LibrarySystem.Extension;
 using LibrarySystem.Models;
 using LibrarySystem.Service;
 using LibrarySystem.Web.Model;
 using Microsoft.AspNetCore.Mvc;
+//using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
 
 namespace LibrarySystem.Controllers
@@ -53,9 +55,11 @@ namespace LibrarySystem.Controllers
         }
         public IActionResult Account(PageModel pageModel)
         {
-            AppModel appModel = new AppModel();
-
-            appModel.UserAccountSearch = pageModel.Search == null ? new UserAccountSearchModel() : JsonConvert.DeserializeObject<UserAccountSearchModel>(pageModel.Search);
+            AppModel appModel = HttpContext.Session.GetOrCreateAppModel();
+            if (!string.IsNullOrEmpty(pageModel.Search))
+            {
+                appModel.UserAccountSearch = JsonConvert.DeserializeObject<UserAccountSearchModel>(pageModel.Search);
+            }
 
             var objects = new List<object>();
             objects.AddRange(_userAccountService.GetAllWithOptions(pageModel).ToList());
@@ -64,6 +68,8 @@ namespace LibrarySystem.Controllers
             appModel.UserAccounts = objects;
             appModel.UserAccountsCount = _userAccountService.GetCountWithOptions(pageModel);
             appModel.currenPage = pageModel;
+
+            HttpContext.Session.SetObjectAsJson("AppModel", appModel);
 
             return View(appModel);
         }
@@ -133,9 +139,10 @@ namespace LibrarySystem.Controllers
         [HttpPost]
         public IActionResult AccountSearch(UserAccountSearchModel searchModel)
         {
-            var page = new PageModel();
-            page.Search = JsonConvert.SerializeObject(searchModel);
-            return RedirectToAction("Account", "Account", page);
+            var pageModel = new PageModel();
+            pageModel.Search = JsonConvert.SerializeObject(searchModel);
+            
+            return RedirectToAction("Account", "Account", pageModel);
         }
     }
 }
