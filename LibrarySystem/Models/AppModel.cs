@@ -1,4 +1,6 @@
 ﻿using LibrarySystem.Data.Entities;
+using LibrarySystem.Web.Model;
+using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
 
 namespace LibrarySystem.Models
 {
@@ -9,6 +11,6 @@ namespace LibrarySystem.Models
         public PageModel? currenPage { get; set; }
         public UserCredentials userCredentials { get; set; }
         public UserAccountSearchModel? UserAccountSearch { get; set; }
-        public List<string> Errors { get; set; }
+        public List<AlertModel> Alerts { get; set; }
     }
 }

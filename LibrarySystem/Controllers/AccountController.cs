@@ -1,6 +1,7 @@
 ﻿using LibrarySystem.Data.Entities;
 using LibrarySystem.Models;
 using LibrarySystem.Service;
+using LibrarySystem.Web.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibrarySystem.Controllers
@@ -31,7 +32,8 @@ namespace LibrarySystem.Controllers
         {
             AppModel appModel = new AppModel();
             appModel.userCredentials = userCredentials;
-            
+            appModel.Alerts = new List<AlertModel>();
+
 
             var userAccount = _userAccountService.GetWithCreadentials(userCredentials);
             if (userAccount != null)
@@ -41,8 +43,7 @@ namespace LibrarySystem.Controllers
             }
             else if(userCredentials.UserName != null || userCredentials.Password != null)
             {
-                appModel.Errors = new List<string>();
-                appModel.Errors.Add("Invalid UserName or Password..");
+                appModel.Alerts.Add(new AlertModel { Type = AlertTypes.Danger, Message = "Invalid username or password" });
             }
             return View(appModel);
         }

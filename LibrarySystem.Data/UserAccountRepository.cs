@@ -95,7 +95,7 @@ namespace LibrarySystem.Data
             IQueryable<UserAccount> query = _dbContext.UserAccount.AsQueryable();
 
             query = query.Where(
-                u => u.UserName == userCredentials.UserName && u.PasswordHash == userCredentials.Password);
+                u => u.UserName == userCredentials.UserName && u.PasswordHash == userCredentials.PasswordHash);
 
             return query.FirstOrDefault();
         }

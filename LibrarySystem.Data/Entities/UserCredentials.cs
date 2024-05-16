@@ -9,17 +9,12 @@ namespace LibrarySystem.Data.Entities
 {
     public class UserCredentials
     {
-        private string _password;
         public string UserName { get; set; }
-        public string Password
-        {
+        public string Password { get; set; }
+        public string PasswordHash {
             get
             {
-                return _password;
-            }
-            set
-            {
-                _password = ComputeMd5Hash(value);
+                return ComputeMd5Hash(Password ?? "");
             }
         }
         private string ComputeMd5Hash(string input)
