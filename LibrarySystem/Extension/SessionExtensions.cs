@@ -25,7 +25,8 @@ namespace LibrarySystem.Extension
             {
                 appModel = new AppModel
                 {
-                    UserAccountSearch = new UserAccountSearchModel()
+                    UserAccountSearch = new UserAccountSearchModel(),
+                    UserAccount = new UserAccount()
                 };
                 if (!string.IsNullOrEmpty(appModel.Search))
                 {

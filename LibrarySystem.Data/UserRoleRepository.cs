@@ -37,7 +37,22 @@ namespace LibrarySystem.Data
             throw new NotImplementedException();
         }
 
+        public UserRole GetWithId(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public int Save(UserAccount userAccount)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Save(UserRole data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Update(UserRole data)
         {
             throw new NotImplementedException();
         }

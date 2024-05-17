@@ -15,5 +15,7 @@ namespace LibrarySystem.Service
         int GetCountWithOptions(PageModel pageModel);
         int DeleteWithIds(Guid[] ids);
         int Save(UserAccount userAccount);
+        UserAccount GetWithId(Guid id);
+        int Update(UserAccount data);
     }
 }

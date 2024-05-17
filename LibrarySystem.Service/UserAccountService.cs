@@ -43,9 +43,19 @@ namespace LibrarySystem.Service
             return this._userAccountRepository.GetWithCreadentials(userCredentials);
         }
 
+        public UserAccount GetWithId(Guid id)
+        {
+            return _userAccountRepository.GetWithId(id);
+        }
+
         public int Save(UserAccount userAccount)
         {
             return this._userAccountRepository.Save(userAccount);
+        }
+
+        public int Update(UserAccount data)
+        {
+            return _userAccountRepository.Update(data);
         }
     }
 }

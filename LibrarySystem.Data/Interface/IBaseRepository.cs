@@ -13,6 +13,8 @@ namespace LibrarySystem.Data.Interface
         IEnumerable<T> GetAllWithOptions(PageModel pageModel);
         int GetCountWithOptions(PageModel pageModel);
         int DeleteWithIds(Guid[] id);
-        int Save(UserAccount userAccount);
+        int Save(T data);
+        T GetWithId(Guid id);
+        int Update(T data);
     }
 }

@@ -15,10 +15,16 @@ namespace LibrarySystem.Web
         public string Type { get; set; }
         public string Placeholder { get; set; }
         public string Value { get; set; }
+        public bool? IsHidden { get; set; }
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "div";
-            output.Attributes.SetAttribute("class", "SysCoreTextBoxDivClass");
+            string attribute = "SysCoreTextBoxDivClass";
+            if (IsHidden ?? false)
+            {
+                attribute += " hidden";
+            }
+            output.Attributes.SetAttribute("class", attribute);
 
             output.Content.AppendHtml("<label for=\""
                 + Id

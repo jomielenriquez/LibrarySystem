@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -124,6 +125,32 @@ namespace LibrarySystem.Data
         {
             userAccount.CreateDate = DateTime.UtcNow;
             _dbContext.UserAccount.Add(userAccount);
+            return _dbContext.SaveChanges();
+        }
+
+        public UserAccount GetWithId(Guid id)
+        {
+            var userAccount = _dbContext.UserAccount.Find(id);
+            userAccount.PasswordHash = string.Empty;
+            return userAccount;
+        }
+
+        public int Update(UserAccount data)
+        {
+            var userAccount = _dbContext.UserAccount.Find(data.UserAccountID);
+            if (userAccount == null)
+            {
+                return 0;
+            }
+            userAccount.FirstName = data.FirstName;
+            userAccount.LastName = data.LastName;
+            userAccount.MiddleName = data.MiddleName;
+            userAccount.UserName = data.UserName;
+            userAccount.PasswordHash = data.PasswordHash;
+            userAccount.UserRoleID = data.UserRoleID;
+            userAccount.UpdateDate = DateTime.UtcNow;
+
+            _dbContext.UserAccount.Update(userAccount);
             return _dbContext.SaveChanges();
         }
     }

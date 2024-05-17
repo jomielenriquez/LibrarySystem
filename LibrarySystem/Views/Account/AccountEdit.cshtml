@@ -5,6 +5,13 @@
     <div class="card-header">Add User</div>
     <div class="card-body">
         <Lib:Form id="UserAccount" submit-tag="Save" controller="Account" action="Save" submit-icon="bi-floppy">
+            <Lib:Textbox id="UserAccountID"
+                         label="UserAccountID"
+                         type="text"
+                         value="@Model.UserAccount.UserAccountID"
+                         is-hidden="true"
+                         placeholder="">
+            </Lib:Textbox>
             <Lib:Textbox id="FirstName"
                          label="FirstName"
                          type="text"

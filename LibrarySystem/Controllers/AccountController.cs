@@ -74,9 +74,14 @@ namespace LibrarySystem.Controllers
             return View(appModel);
         }
 
-        public IActionResult AccountEdit(AppModel appModel)
+        public IActionResult AccountEdit(UserAccount userAccount)
         {
-            appModel.UserAccount = new UserAccount();
+            AppModel appModel = HttpContext.Session.GetOrCreateAppModel();
+
+            if(userAccount.UserAccountID != Guid.Empty)
+            {
+                appModel.UserAccount = _userAccountService.GetWithId(userAccount.UserAccountID);
+            }
 
             var objects = new List<object>();
             objects.AddRange(_userRoleService.GetAll().ToList());
@@ -114,13 +119,17 @@ namespace LibrarySystem.Controllers
             }
 
             app.Alerts = new List<AlertModel>();
-            if(required.Count > 0)
+            app.UserAccount = userAccount;
+
+            if (required.Count > 0)
             {
                 app.Alerts.Add(new AlertModel()
                 {
                     Type = AlertTypes.Warning,
                     Message = $"The following fields are required: {string.Join(",", required)}"
                 });
+
+                HttpContext.Session.SetObjectAsJson("AppModel", app);
                 return RedirectToAction("AccountEdit", "Account", app);
             }
             
@@ -129,10 +138,20 @@ namespace LibrarySystem.Controllers
                 UserName = userAccount.UserName,
                 Password = userAccount.PasswordHash
             };
+
             userAccount.PasswordHash = userCredential.PasswordHash;
 
-            _userAccountService.Save(userAccount);
+            if(userAccount.UserAccountID == Guid.Empty)
+            {
+                _userAccountService.Save(userAccount);
+            }
+            else
+            {
+                _userAccountService.Update(userAccount);
+            }
 
+            //HttpContext.Session.SetObjectAsJson("AppModel", app);
+            HttpContext.Session.SetObjectAsJson("AppModel", new AppModel { UserAccountSearch = new UserAccountSearchModel()});
             return RedirectToAction("Account", "Account");
         }
 
