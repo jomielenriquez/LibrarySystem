@@ -52,10 +52,9 @@ namespace LibrarySystem.Controllers
         {
             AppModel appModel = HttpContext.Session.GetOrCreateAppModel();
 
-            if (bookDatabase.BookDatabaseID != Guid.Empty)
-            {
-                appModel.BookDatabase = _bookDatabaseService.GetWithId(bookDatabase.BookDatabaseID);
-            }
+            appModel.BookDatabase = bookDatabase.BookDatabaseID != Guid.Empty
+                ? _bookDatabaseService.GetWithId(bookDatabase.BookDatabaseID)
+                : new BookDatabase();
 
             return View(appModel);
         }

@@ -1,0 +1,39 @@
+﻿@using LibrarySystem.Models
+@{
+    ViewData["Title"] = "Borrowed Records";
+}
+
+<Lib:ActionItems caption="Borrow Records"
+                 template="Default"
+                 id="BorrowID"
+                 table="BorrowedTableID"
+                 controller="Borrow"
+                 delete-action="Delete"
+                 edit-action="BorrowEdit">
+</Lib:ActionItems>
+
+@* <Lib:SearchForm id="BorrowSearchForm"
+                controller="Borrow"
+                action="BorrowSearch">
+    <Lib:Textbox id="Title"
+                 label="Title"
+                 type="text"
+                 value="@Model.BookDatabaseSearchModel.Title"
+                 placeholder="Enter Title">
+    </Lib:Textbox>
+</Lib:SearchForm> *@
+
+<Lib:Table id="BorrowedTableID"
+           items="Model.BorrowedBooks"
+           count="Model.BorrowedBookCount"
+           page="Model.currenPage"
+           selection-mode="Multiple"
+           property="BorrowedBookID"
+           route="/Borrow/Records"
+           url="/Borrow/BorrowEdit?BorrowedBookID="
+           column=1>
+
+    <Lib:Column property="Name" caption="Name"></Lib:Column>
+    <Lib:Column property="Book" caption="Book"></Lib:Column>
+
+</Lib:Table>
