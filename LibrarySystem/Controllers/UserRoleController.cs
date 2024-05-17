@@ -24,9 +24,7 @@ namespace LibrarySystem.Controllers
         public IActionResult UserRole(PageModel pageModel)
         {
             AppModel appModel = HttpContext.Session.GetOrCreateAppModel();
-            if (!string.IsNullOrEmpty(pageModel.Search))
-            {
-            }
+            
             appModel.UserRoleSearchModel = !string.IsNullOrEmpty(pageModel.Search)
                 ? JsonConvert.DeserializeObject<UserRoleSearchModel>(pageModel.Search)
                 : new UserRoleSearchModel();

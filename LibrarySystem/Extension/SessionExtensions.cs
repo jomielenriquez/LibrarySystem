@@ -28,8 +28,10 @@ namespace LibrarySystem.Extension
                 {
                     UserAccountSearch = new UserAccountSearchModel(),
                     UserRoleSearchModel = new UserRoleSearchModel(),
+                    BookDatabaseSearchModel = new BookDatabaseSearchModel(),
                     UserAccount = new UserAccount(),
-                    UserRole = new UserRole()
+                    UserRole = new UserRole(),
+                    BookDatabase = new BookDatabase(),
                 };
                 if (!string.IsNullOrEmpty(appModel.Search))
                 {

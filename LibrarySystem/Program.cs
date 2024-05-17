@@ -21,6 +21,10 @@ builder.Services.AddScoped<IUserAccountService, UserAccountService>();
 builder.Services.AddScoped<IBaseRepository<UserRole>, UserRoleRepository>();
 builder.Services.AddScoped<IUserRoleService, UserRoleService>();
 
+
+builder.Services.AddScoped<IBaseRepository<BookDatabase>, BookDatabaseRepository>();
+builder.Services.AddScoped<IBookDatabaseService, BookDatabaseService>();
+
 // session services
 builder.Services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
 builder.Services.AddSession(options =>
