@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibrarySystem.Data.Entities
+namespace LibrarySystem.Data.SearchModel
 {
     public class BorrowedBooksSearchModel
     {
