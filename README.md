@@ -25,3 +25,10 @@ The business logic layer contains the core functionality and rules of the applic
 
 #### **4. LibrarySystem.Web (Custom Tag Helpers)**
 This project is a class library that contains custom tag helpers used within the MVC views. These helpers simplify view rendering and enhance the functionality of the user interface.
+
+## Project Details
+### LibrarySystem (MVC Project)
+
+#### User Account
+ - **Login:** Allow users to log in their credentials. MDS5 encryption is used to secure passwords
+    ![alt text](https://github.com/jomielenriquez/LibrarySystem/tree/main/Images/Login.png?raw=true)
