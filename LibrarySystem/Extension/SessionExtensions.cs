@@ -1,4 +1,5 @@
 ﻿using LibrarySystem.Data.Entities;
+using LibrarySystem.Data.SearchModel;
 using LibrarySystem.Models;
 using LibrarySystem.Service;
 using Microsoft.AspNetCore.Mvc.RazorPages;

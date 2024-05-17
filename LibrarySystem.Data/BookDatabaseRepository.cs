@@ -1,6 +1,7 @@
 ﻿using LibrarySystem.Data.Data;
 using LibrarySystem.Data.Entities;
 using LibrarySystem.Data.Interface;
+using LibrarySystem.Data.SearchModel;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;

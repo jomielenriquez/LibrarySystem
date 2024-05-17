@@ -1,4 +1,5 @@
 ﻿using LibrarySystem.Data.Entities;
+using LibrarySystem.Data.SearchModel;
 using LibrarySystem.Extension;
 using LibrarySystem.Models;
 using LibrarySystem.Service;
