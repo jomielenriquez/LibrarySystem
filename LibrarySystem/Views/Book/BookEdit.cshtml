@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Book";
+}
+<div class="card bg-light mb-3">
+    <div class="card-header">Book</div>
+    <div class="card-body">
+        <Lib:Form id="Book" submit-tag="Save" controller="Book" action="Save" submit-icon="bi-floppy">
+            <Lib:Textbox id="BookDatabaseID"
+                         label="BookDatabaseID"
+                         type="text"
+                         value="@Model.BookDatabase.BookDatabaseID"
+                         is-hidden="true"
+                         placeholder="">
+            </Lib:Textbox>
+            <Lib:Textbox id="Title"
+                         label="Title"
+                         type="text"
+                         value="@Model.BookDatabase.Title"
+                         placeholder="Enter Title">
+            </Lib:Textbox>
+            <Lib:Textbox id="Author"
+                         label="Author"
+                         type="text"
+                         value="@Model.BookDatabase.Author"
+                         placeholder="Enter Author">
+            </Lib:Textbox>
+            <Lib:Textbox id="Description"
+                         label="Description"
+                         type="text"
+                         value="@Model.BookDatabase.Description"
+                         placeholder="Enter Description">
+            </Lib:Textbox>
+            <Lib:Textbox id="Quantity"
+                         label="Quantity"
+                         type="number"
+                         value="@Model.BookDatabase.Quantity"
+                         placeholder="Enter Quantity">
+            </Lib:Textbox>
+        </Lib:Form>
+    </div>
+</div>

@@ -7,23 +7,22 @@ using System.Threading.Tasks;
 
 namespace LibrarySystem.Data.Entities
 {
-    public class UserRole
+    public class BorrowedBook
     {
         [Key]
         [Required]
-        public Guid UserRoleID { get; set; }
-
+        public Guid BorrowedBookID{ get; set; }
         [Required]
-        public string Name { get; set; }
-        [Required]
-        public string Code { get; set; }
-        public string? Description { get; set; }
+        public Guid UserAccountID{ get; set; }
+        [Required] 
+        public Guid BookDatabaseID{ get; set; }
+        public bool IsReturned{ get; set; }
         [Required]
         public DateTime CreateDate { get; set; }
         public string? CreateBy { get; set; }
         public DateTime? UpdateDate { get; set; }
         public string? UpdateBy { get; set; }
-
-        public ICollection<UserAccount> UserAccounts { get; set; }
+        public UserAccount UserAccount { get; set; }
+        public BookDatabase BookDatabase { get; set; }
     }
 }

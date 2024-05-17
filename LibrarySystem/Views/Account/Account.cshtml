@@ -1,0 +1,57 @@
+﻿@using LibrarySystem.Models
+@{
+    ViewData["Title"] = "Account List";
+}
+
+<Lib:ActionItems caption="User Accounts"
+                template="Default"
+                id="UserAccountsID"
+                table="UserAccountTableID"
+                controller="Account"
+                delete-action="Delete"
+                edit-action="AccountEdit">
+</Lib:ActionItems>
+
+<Lib:SearchForm
+    id="UserRoleSearchForm"
+    controller="Account"
+    action="AccountSearch">
+    <Lib:Textbox
+        id="AccountFirstName"
+        label="First Name"
+        type="text"
+        value="@Model.UserAccountSearch.AccountFirstName"
+        placeholder="Enter First Name">
+    </Lib:Textbox>
+    <Lib:Textbox
+        id="AccountMiddleName"
+        label="Middle Name"
+        type="text"
+        value="@Model.UserAccountSearch.AccountMiddleName"
+        placeholder="Enter Middle Name">
+    </Lib:Textbox>
+    <Lib:Textbox
+        id="AccountLastName"
+        label="Last Name"
+        type="text"
+        value="@Model.UserAccountSearch.AccountLastName"
+        placeholder="Enter Last Name">
+    </Lib:Textbox>
+</Lib:SearchForm>
+
+<Lib:Table
+    id="UserAccountTableID"
+    items="Model.UserAccounts"
+    count="Model.UserAccountsCount"
+    page="Model.currenPage"
+    selection-mode="Multiple"
+    property="UserAccountID"
+    route="/Account/Account"
+    url="/Account/AccountEdit?UserAccountID="
+    column=1>
+
+    <Lib:Column property="UserName" caption="User Name"></Lib:Column>
+    <Lib:Column property="FirstName" caption="First Name"></Lib:Column>
+    <Lib:Column property="LastName" caption="Last Name"></Lib:Column>
+
+</Lib:Table>

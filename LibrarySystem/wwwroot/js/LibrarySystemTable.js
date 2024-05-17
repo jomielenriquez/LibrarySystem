@@ -1,9 +1,9 @@
 ﻿class MyTable {
-    constructor(tableId) {
+    constructor(tableId,route) {
         this.tableId = tableId;
+        this.route = route;
         this.initDropdown();
         this.initCheckbox();
-        //this.initTableHeader();
     }
 
     showTableName() {
@@ -11,8 +11,9 @@
     }
 
     initDropdown() {
+        var route = this.route;
         $("#" + this.tableId + "Dropdown").on('change', function () {
-            window.location = "/?PageSize=" + this.value;
+            window.location = route + "/?PageSize=" + this.value;
         })
     }
 
@@ -27,8 +28,5 @@
 
     initTableHeader() {
         var tableId = this.tableId;
-        //$("#" + this.tableId + " thead tr th").on('click', function () {
-        //    alert("test header");
-        //})
     }
 }

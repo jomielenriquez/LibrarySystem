@@ -1,0 +1,40 @@
+﻿@using LibrarySystem.Models
+@{
+    ViewData["Title"] = "User Role List";
+}
+
+<Lib:ActionItems caption="User Role"
+                 template="Default"
+                 id="UserRoleID"
+                 table="UserRoleTableID"
+                 controller="UserRole"
+                 delete-action="Delete"
+                 edit-action="UserRoleEdit">
+</Lib:ActionItems>
+
+<Lib:SearchForm id="UserRoleSearchForm"
+                controller="UserRole"
+                action="UserRoleSearch">
+    <Lib:Textbox id="UserRoleName"
+                 label="Name"
+                 type="text"
+                 value="@Model.UserRoleSearchModel.UserRoleName"
+                 placeholder="Enter Role Name">
+    </Lib:Textbox>
+</Lib:SearchForm>
+
+<Lib:Table id="UserRoleTableID"
+           items="Model.UserRoles"
+           count="Model.UserRolesCount"
+           page="Model.currenPage"
+           selection-mode="Multiple"
+           property="UserRoleID"
+           route="/UserRole/UserRole"
+           url="/UserRole/UserRoleEdit?UserRoleID="
+           column=1>
+
+    <Lib:Column property="Name" caption="Name"></Lib:Column>
+    <Lib:Column property="Code" caption="Code"></Lib:Column>
+    <Lib:Column property="Description" caption="Description"></Lib:Column>
+
+</Lib:Table>

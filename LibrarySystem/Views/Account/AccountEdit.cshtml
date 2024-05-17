@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Edit Account";
+}
+<div class="card bg-light mb-3">
+    <div class="card-header">Add User</div>
+    <div class="card-body">
+        <Lib:Form id="UserAccount" submit-tag="Save" controller="Account" action="Save" submit-icon="bi-floppy">
+            <Lib:Textbox id="UserAccountID"
+                         label="UserAccountID"
+                         type="text"
+                         value="@Model.UserAccount.UserAccountID"
+                         is-hidden="true"
+                         placeholder="">
+            </Lib:Textbox>
+            <Lib:Textbox id="FirstName"
+                         label="FirstName"
+                         type="text"
+                         value="@Model.UserAccount.FirstName"
+                         placeholder="Enter first name">
+            </Lib:Textbox>
+            <Lib:Textbox id="MiddleName"
+                         label="Middle Name"
+                         type="text"
+                         value="@Model.UserAccount.MiddleName"
+                         placeholder="Enter middle name">
+            </Lib:Textbox>
+            <Lib:Textbox id="LastName"
+                         label="Last Name"
+                         type="text"
+                         value="@Model.UserAccount.LastName"
+                         placeholder="Enter last name">
+            </Lib:Textbox>
+            <Lib:Textbox id="UserName"
+                         label="Username"
+                         type="text"
+                         value="@Model.UserAccount.UserName"
+                         placeholder="Enter username">
+            </Lib:Textbox>
+            <Lib:Textbox id="PasswordHash"
+                         label="Password"
+                         type="password"
+                         value="@Model.UserAccount.PasswordHash"
+                         placeholder="Enter password">
+            </Lib:Textbox>
+            <Lib:DropDown
+                id="UserRoleID"
+                label="Role"
+                name="Name"
+                value="UserRoleID"
+                items="@Model.UserAccounts"></Lib:DropDown>
+        </Lib:Form>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Borrow";
+}
+<div class="card bg-light mb-3">
+    <div class="card-header">Borrow</div>
+    <div class="card-body">
+        <Lib:Form id="Borrow" submit-tag="Save" controller="Borrow" action="Save" submit-icon="bi-floppy">
+            <Lib:Textbox id="BorrowedBookID"
+                         label="BorrowedBookID"
+                         type="text"
+                         value="@Model.BorrowedBook.BorrowedBookID"
+                         is-hidden="true"
+                         placeholder="">
+            </Lib:Textbox>
+            <Lib:DropDown id="UserAccountID"
+                          label="Borrower"
+                          name="UserName"
+                          value="UserAccountID"
+                          items="@Model.UserAccounts"></Lib:DropDown>
+            <Lib:DropDown id="BookDatabaseID"
+                label="Book"
+                name="Title"
+                value="BookDatabaseID"
+                items="@Model.Books"></Lib:DropDown>
+        </Lib:Form>
+    </div>
+</div>

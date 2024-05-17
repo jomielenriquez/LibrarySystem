@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Role";
+}
+<div class="card bg-light mb-3">
+    <div class="card-header">Role</div>
+    <div class="card-body">
+        <Lib:Form id="UserAccount" submit-tag="Save" controller="UserRole" action="Save" submit-icon="bi-floppy">
+            <Lib:Textbox id="UserRoleID"
+                         label="UserRoleID"
+                         type="text"
+                         value="@Model.UserRole.UserRoleID"
+                         is-hidden="true"
+                         placeholder="">
+            </Lib:Textbox>
+            <Lib:Textbox id="Name"
+                         label="Name"
+                         type="text"
+                         value="@Model.UserRole.Name"
+                         placeholder="Enter Name">
+            </Lib:Textbox>
+            <Lib:Textbox id="Code"
+                         label="Code"
+                         type="text"
+                         value="@Model.UserRole.Code"
+                         placeholder="Enter Code">
+            </Lib:Textbox>
+            <Lib:Textbox id="Description"
+                         label="Description"
+                         type="text"
+                         value="@Model.UserRole.Description"
+                         placeholder="Enter Description">
+            </Lib:Textbox>
+        </Lib:Form>
+    </div>
+</div>

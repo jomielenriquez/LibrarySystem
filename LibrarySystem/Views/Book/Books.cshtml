@@ -1,0 +1,52 @@
+﻿@using LibrarySystem.Models
+@{
+    ViewData["Title"] = "Books";
+}
+
+<Lib:ActionItems caption="Books"
+                 template="Default"
+                 id="BooksID"
+                 table="BookTableID"
+                 controller="Book"
+                 delete-action="Delete"
+                 edit-action="BookEdit">
+</Lib:ActionItems>
+
+<Lib:SearchForm id="BookSearchForm"
+                controller="Book"
+                action="BookSearch">
+    <Lib:Textbox id="Title"
+                 label="Title"
+                 type="text"
+                 value="@Model.BookDatabaseSearchModel.Title"
+                 placeholder="Enter Title">
+    </Lib:Textbox>
+    <Lib:Textbox id="Author"
+                 label="Author"
+                 type="text"
+                 value="@Model.BookDatabaseSearchModel.Author"
+                 placeholder="Enter Author">
+    </Lib:Textbox>
+    <Lib:Textbox id="Description"
+                 label="Description"
+                 type="text"
+                 value="@Model.BookDatabaseSearchModel.Description"
+                 placeholder="Enter Description">
+    </Lib:Textbox>
+</Lib:SearchForm>
+
+<Lib:Table id="BookTableID"
+           items="Model.Books"
+           count="Model.BookDatabaseCount"
+           page="Model.currenPage"
+           selection-mode="Multiple"
+           property="BookDatabaseID"
+           route="/Book/Books"
+           url="/Book/BookEdit?BookDatabaseID="
+           column=1>
+
+    <Lib:Column property="Title" caption="Title"></Lib:Column>
+    <Lib:Column property="Author" caption="Author"></Lib:Column>
+    <Lib:Column property="Description" caption="Description"></Lib:Column>
+
+</Lib:Table>
