@@ -18,7 +18,7 @@ namespace LibrarySystem.Service
 
         public int DeleteWithIds(Guid[] id)
         {
-            throw new NotImplementedException();
+            return _userRoleRepository.DeleteWithIds(id);
         }
 
         public IEnumerable<UserRole> GetAll()
@@ -28,17 +28,27 @@ namespace LibrarySystem.Service
 
         public IEnumerable<UserRole> GetAllWithOptions(PageModel pageModel)
         {
-            throw new NotImplementedException();
+            return _userRoleRepository.GetAllWithOptions(pageModel);
         }
 
         public int GetCountWithOptions(PageModel pageModel)
         {
-            throw new NotImplementedException();
+            return _userRoleRepository.GetCountWithOptions(pageModel);
         }
 
-        public int Save(UserAccount userAccount)
+        public UserRole GetWithId(Guid id)
         {
-            throw new NotImplementedException();
+            return _userRoleRepository.GetWithId(id);
+        }
+
+        public int Save(UserRole userAccount)
+        {
+            return _userRoleRepository.Save(userAccount);
+        }
+
+        public int Update(UserRole data)
+        {
+            return _userRoleRepository.Update(data);
         }
     }
 }

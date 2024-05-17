@@ -13,10 +13,13 @@ namespace LibrarySystem.Data.Entities
         [Required]
         public Guid UserRoleID { get; set; }
 
-        public required string Name { get; set; }
-        public required string Code { get; set; }
+        [Required]
+        public string Name { get; set; }
+        [Required]
+        public string Code { get; set; }
         public string? Description { get; set; }
-        public required DateTime CreateDate { get; set; }
+        [Required]
+        public DateTime CreateDate { get; set; }
         public string? CreateBy { get; set; }
         public DateTime? UpdateDate { get; set; }
         public string? UpdateBy { get; set; }

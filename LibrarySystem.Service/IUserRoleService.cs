@@ -13,6 +13,8 @@ namespace LibrarySystem.Service
         IEnumerable<UserRole> GetAllWithOptions(PageModel pageModel);
         int GetCountWithOptions(PageModel pageModel);
         int DeleteWithIds(Guid[] id);
-        int Save(UserAccount userAccount);
+        int Save(UserRole userAccount);
+        UserRole GetWithId(Guid id);
+        int Update(UserRole data);
     }
 }

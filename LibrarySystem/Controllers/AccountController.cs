@@ -86,7 +86,7 @@ namespace LibrarySystem.Controllers
             var objects = new List<object>();
             objects.AddRange(_userRoleService.GetAll().ToList());
 
-            appModel.UserRole = new List<object>();
+            appModel.UserRoles = new List<object>();
             appModel.UserAccounts = objects;
 
             return View(appModel);
@@ -150,7 +150,6 @@ namespace LibrarySystem.Controllers
                 _userAccountService.Update(userAccount);
             }
 
-            //HttpContext.Session.SetObjectAsJson("AppModel", app);
             HttpContext.Session.SetObjectAsJson("AppModel", new AppModel { UserAccountSearch = new UserAccountSearchModel()});
             return RedirectToAction("Account", "Account");
         }

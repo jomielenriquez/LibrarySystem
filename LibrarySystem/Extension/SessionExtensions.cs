@@ -1,5 +1,6 @@
 ﻿using LibrarySystem.Data.Entities;
 using LibrarySystem.Models;
+using LibrarySystem.Service;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
 
@@ -26,12 +27,15 @@ namespace LibrarySystem.Extension
                 appModel = new AppModel
                 {
                     UserAccountSearch = new UserAccountSearchModel(),
-                    UserAccount = new UserAccount()
+                    UserRoleSearchModel = new UserRoleSearchModel(),
+                    UserAccount = new UserAccount(),
+                    UserRole = new UserRole()
                 };
                 if (!string.IsNullOrEmpty(appModel.Search))
                 {
                     appModel.UserAccountSearch = JsonConvert.DeserializeObject<UserAccountSearchModel>(appModel.Search);
                 }
+
                 session.SetObjectAsJson("AppModel", appModel);
             }
             return appModel;

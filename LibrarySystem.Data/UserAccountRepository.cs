@@ -61,9 +61,9 @@ namespace LibrarySystem.Data
                 );
             }
 
-            var userRoleSearch = pageModel.Search == null ? new UserAccountSearchModel() : JsonConvert.DeserializeObject<UserAccountSearchModel>(pageModel.Search);
+            var userAccountSearch = pageModel.Search == null ? new UserAccountSearchModel() : JsonConvert.DeserializeObject<UserAccountSearchModel>(pageModel.Search);
 
-            query = AddFilter(userRoleSearch, query);
+            query = AddFilter(userAccountSearch, query);
 
             // Apply pagination
             query = query.Skip((pageModel.Page - 1) * pageModel.PageSize).Take(pageModel.PageSize);
@@ -71,21 +71,21 @@ namespace LibrarySystem.Data
             return query.ToList();
         }
 
-        public IQueryable<UserAccount> AddFilter(UserAccountSearchModel userRoleSearch, IQueryable<UserAccount> query)
+        public IQueryable<UserAccount> AddFilter(UserAccountSearchModel userAccountSearch, IQueryable<UserAccount> query)
         {
-            if (userRoleSearch != null)
+            if (userAccountSearch != null)
             {
-                if (userRoleSearch.AccountFirstName != null)
+                if (userAccountSearch.AccountFirstName != null)
                 {
-                    query = query.Where(u => u.FirstName.Contains(userRoleSearch.AccountFirstName));
+                    query = query.Where(u => u.FirstName.Contains(userAccountSearch.AccountFirstName));
                 }
-                if (userRoleSearch.AccountMiddleName != null)
+                if (userAccountSearch.AccountMiddleName != null)
                 {
-                    query = query.Where(u => u.MiddleName.Contains(userRoleSearch.AccountMiddleName));
+                    query = query.Where(u => u.MiddleName.Contains(userAccountSearch.AccountMiddleName));
                 }
-                if (userRoleSearch.AccountLastName != null)
+                if (userAccountSearch.AccountLastName != null)
                 {
-                    query = query.Where(u => u.LastName.Contains(userRoleSearch.AccountLastName));
+                    query = query.Where(u => u.LastName.Contains(userAccountSearch.AccountLastName));
                 }
             }
             return query;
@@ -121,10 +121,10 @@ namespace LibrarySystem.Data
             return _dbContext.SaveChanges();
         }
 
-        public int Save(UserAccount userAccount)
+        public int Save(UserAccount data)
         {
-            userAccount.CreateDate = DateTime.UtcNow;
-            _dbContext.UserAccount.Add(userAccount);
+            data.CreateDate = DateTime.UtcNow;
+            _dbContext.UserAccount.Add(data);
             return _dbContext.SaveChanges();
         }
 
