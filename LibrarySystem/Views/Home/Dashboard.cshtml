@@ -1,4 +1,25 @@
 ﻿@{
     ViewData["Title"] = "Dashboard";
 }
-<h1>Dashboard</h1>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6">
+        <h1>Library System</h1>
+        <p class="lead">Dashboard</p>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6">
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a asp-area="" asp-controller="Account" asp-action="Account">Account</a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a asp-area="" asp-controller="UserRole" asp-action="UserRole">User Role</a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a asp-area="" asp-controller="Book" asp-action="Books">Books</a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a asp-area="" asp-controller="Borrow" asp-action="Records">Records</a>
+            </li>
+        </ul>
+    </div>
+</div>
