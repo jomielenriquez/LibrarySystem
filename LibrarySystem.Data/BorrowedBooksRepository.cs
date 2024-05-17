@@ -123,6 +123,7 @@ namespace LibrarySystem.Data
             return query.Include(x => x.UserAccount).Include(x => x.UserAccount).Select
                 (x => new Borrows()
                 {
+                    BorrowedBookID = x.BorrowedBookID,
                     Book = x.BookDatabase.Title,
                     Name = $"{x.UserAccount.FirstName} {x.UserAccount.LastName}"
                 });

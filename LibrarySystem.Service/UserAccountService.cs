@@ -1,6 +1,7 @@
 ﻿using LibrarySystem.Data;
 using LibrarySystem.Data.Entities;
 using LibrarySystem.Data.Interface;
+using LibrarySystem.Data.SearchModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

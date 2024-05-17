@@ -5,13 +5,14 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibrarySystem.Data.Entities
+namespace LibrarySystem.Data.SearchModel
 {
     public class UserCredentials
     {
         public string UserName { get; set; }
         public string Password { get; set; }
-        public string PasswordHash {
+        public string PasswordHash
+        {
             get
             {
                 return ComputeMd5Hash(Password ?? "");

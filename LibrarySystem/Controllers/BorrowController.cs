@@ -63,7 +63,7 @@ namespace LibrarySystem.Controllers
             if (borrowed.BookDatabaseID != Guid.Empty)
             {
             }
-            appModel.BorrowedBook = borrowed.BookDatabaseID != Guid.Empty
+            appModel.BorrowedBook = borrowed.BorrowedBookID != Guid.Empty
                 ? _borrowedBooksService.GetWithId(borrowed.BorrowedBookID) 
                 : new BorrowedBook();
 
