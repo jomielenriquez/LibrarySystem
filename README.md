@@ -31,4 +31,4 @@ This project is a class library that contains custom tag helpers used within the
 
 #### User Account
  - **Login:** Allow users to log in their credentials. MDS5 encryption is used to secure passwords
-    ![alt text](https://github.com/jomielenriquez/LibrarySystem/tree/main/Images/Login.png?raw=true)
+    ![alt text](https://github.com/jomielenriquez/LibrarySystem/blob/main/Images/Login.png)
